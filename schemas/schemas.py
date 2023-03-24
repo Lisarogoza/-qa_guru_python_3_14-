@@ -1,38 +1,37 @@
-from voluptuous import Schema
+from voluptuous import Schema, PREVENT_EXTRA
 
-create_user = Schema(
+user = Schema(
     {
-        'name': str,
-        'job': str,
-        'id': str,
-        'createdAt': str
+        "id": int,
+        "email": str,
+        "first_name": str,
+        "last_name": str,
+        "avatar": str
     },
 )
-
-update_user = Schema(
+support = Schema(
     {
-        'name': str,
-        'job': str,
-        'updatedAt': str
-    }
+        "url": str,
+        "text": str
+    })
+user_schema = Schema(
+    {
+        "data": user,
+        "support": support
+    },
+    required=True,
+    extra=PREVENT_EXTRA
 )
 
-register_user = Schema(
+users_schema = Schema(
     {
-        'id': int,
-        'token': str
-    }
-)
-
-
-login_user = Schema(
-    {
-        'token': str
-    }
-)
-
-unsuccessful_login_user = Schema(
-    {
-        'error': str
-    }
+        "page": int,
+        "per_page": int,
+        "total": int,
+        "total_pages": int,
+        "data": [user],
+        "support": support
+    },
+    required=True,
+    extra=PREVENT_EXTRA,
 )
