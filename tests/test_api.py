@@ -1,7 +1,7 @@
 import requests
 from pytest_voluptuous import S
 from requests import Response
-from schemas.user import user_schema
+from schemas.schemas import user_schema
 
 
 def test_get_users():
