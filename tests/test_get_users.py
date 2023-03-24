@@ -1,6 +1,6 @@
 import requests
 from pytest_voluptuous import S
-from schemas.user import users_schema
+from schemas.schemas import users_schema
 import logging
 
 
